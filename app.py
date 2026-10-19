@@ -74,8 +74,11 @@ if loaded_data is None:
 locations, languages, locations_map, languages_map, db_manager, client = loaded_data
 
 if not client or not client.login or not client.password:
-    st.error("DataForSEO credentials are not configured. Please add them to your `.streamlit/secrets.toml` file.")
-    st.stop()
+    st.warning(
+        "DataForSEO credentials are not configured. "
+        "The **Data Fetcher** and **SERP Clustering** tabs need DataForSEO; "
+        "**Semantic Clustering** and **Data Analysis** work with no API keys."
+    )
     
 # --- Main Application UI (Tabs) ---
 tab1, tab2, tab3, tab4, tab5 = st.tabs(
